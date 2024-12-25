@@ -1,5 +1,22 @@
 body{
+width: 70vh;
+min-height: 100vh;
+background-color: white;
+}
 
-    background-color: black;
-    color: white;
+html{
+    scrollbar-width:thin;
+}
+
+header{
+border: white 2px solid;
+width: 100%;
+height: 10vh;
+display: block;
+background-color: rgb(4, 4, 20);
+border-radius: 5px;
+}
+
+.header-logo{
+    height: 100%;
 }
