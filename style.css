@@ -58,6 +58,7 @@ box-shadow:black 2px 2px ;
         align-items: center;
         padding: 0 10px;
         box-sizing: border-box;
+        margin-bottom:7px ;
     }
     
     .bookmark-input {
