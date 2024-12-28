@@ -57,9 +57,13 @@ try {
             bookmark_title.appendChild(p_title);
             container.appendChild(bookmark);
             
-            bookmark,bookmark_title,bookmark_favicon.onclick = () => { // Opens the webpage...
-                window.open(bookmarkCreated.url)
-            }
+                function openUrl(element) {
+                    element.onclick = () => {
+                        window.open(bookmarkCreated.url)
+                    }
+                }
+                openUrl(bookmark_title)
+                openUrl(bookmark_favicon)
 
 
             let bookmarkDivsArray = []
