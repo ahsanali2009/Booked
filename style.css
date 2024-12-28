@@ -80,3 +80,8 @@ box-shadow:black 2px 2px ;
         color: black;
         font-family: "Poppins", sans-serif;
     }
+    
+    .bookmark-title a {
+        color: black;
+        
+    }

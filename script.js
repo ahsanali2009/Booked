@@ -1,7 +1,7 @@
 try {
     chrome.bookmarks.getTree(function (bookmarkDOM) {
         // Find the bookmarks array
-        let bookmarksArray = bookmarkDOM[0]?.children[0]?.children;
+        let bookmarksArray = bookmarkDOM[0].children[0]?.children;
 
         if (!bookmarksArray) {
             console.error("No bookmarks found.");
@@ -33,31 +33,43 @@ try {
             let getIndexOfUrl = (bookmarkCreated_http_replace).indexOf("/")
             let bookmarkCreated_slice = bookmarkCreated_http_replace.slice(0, getIndexOfUrl)
             let bookmarkCreated_combine = `http://${bookmarkCreated_slice}/favicon.ico`
-            bookmark_favicon.src = `${bookmarkCreated_combine}`;
+            
+            bookmark_favicon.src = bookmarkCreated_combine;
 
 
             let bookmark_title = document.createElement('div');
             bookmark_title.setAttribute('class', 'bookmark-title');
 
-            let p_title = document.createElement('p');
+            let p_title = document.createElement('a');
+            p_title.href = bookmarkCreated.url
             p_title.textContent = (bookmarkCreated.title)
 
-        if((bookmarkCreated.title).length > 49){ // Get short title.
-            let temp_p_title = (bookmarkCreated.title).slice(0,49)  
-            p_title.textContent = `${temp_p_title} ....`        
-        } else {
-             p_title.textContent = (bookmarkCreated.title) }
+            if ((bookmarkCreated.title).length > 49) { // Get short title.
+                let temp_p_title = (bookmarkCreated.title).slice(0,49)  
+                p_title.textContent = `${temp_p_title} ....`        
 
+            } else {
+             p_title.textContent = (bookmarkCreated.title) }
 
             bookmark.append(bookmark_input);
             bookmark.append(bookmark_favicon);
             bookmark.append(bookmark_title);
             bookmark_title.appendChild(p_title);
             container.appendChild(bookmark);
+            
+            bookmark.onclick = () => { // Opens the webpage...
+                window.open(bookmarkCreated.url)
+            }
 
+            
+            let bookmarkDivsArray = []
+            bookmarkDivsArray.push(bookmark) // Add bookmarks to the bookmarkDivs Array.
+            
 
-        });
+        })
+        
     });
+    
 } catch (error) {
-    console.error("An error occurred:", error);
+    console.log(error)
 }
