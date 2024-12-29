@@ -60,6 +60,9 @@ box-shadow:black 2px 2px ;
         box-sizing: border-box;
         margin-bottom:7px ;
     }
+    .bookmark:hover{
+        background-color: rgb(248, 246, 246);
+    }
     
     .bookmark-input {
         transform: scale(1.5);
