@@ -66,6 +66,14 @@ try {
 
                 openUrl(bookmark_title)
                 openUrl(bookmark_favicon)
+
+
+                bookmark_input.onchange = () => {
+                    if(bookmark_input.checked){
+                    
+                    }
+                }
+
             });
         }
 
@@ -77,13 +85,17 @@ try {
         searchBar.oninput = () => {
             let query = searchBar.value.toLowerCase();
             let filteredBookmarksArray = bookmarksArray.filter((bookmark) => {
+
                 return bookmark.title.toLowerCase().includes(query);
             });
 
 
             renderBookmarks(filteredBookmarksArray);
+
         }
-    });
+    
+});
+
 
 } catch (error) {
     console.log(error)
