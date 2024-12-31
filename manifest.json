@@ -3,7 +3,6 @@
     "name": "Bookmarks Manager",
     "description": "A Chrome extension to manage bookmarks.",
     "version": "1.0",
-    "matches":"https://youtube.com",
     "permissions": [
       "bookmarks"
     ],
@@ -11,7 +10,8 @@
       "service_worker": "script.js"
     },
     "action": {
-      "default_popup": "index.html"
+      "default_popup": "index.html",
+      "default_icon": "/images/faviconimg.png"
     }
   }
   
