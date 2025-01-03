@@ -5,9 +5,8 @@ try {
         let bookmarksArrayDOM2 = (bookmarkDOM[0].children[1]?.children)
 
         let bookmarksArray = [...bookmarksArrayDOM1,...bookmarksArrayDOM2]
-
-
         console.log(bookmarksArray)
+
     
 
         if (!bookmarksArray) {
@@ -101,7 +100,18 @@ try {
 }
 
 // chrome.bookmarks.create({
-//     title:"lorem",
-//     url : "https://google.com"
+//     title:"test",
+//     url : "https://youtube.com"
 
 // })
+
+let createBookmarkBox = document.getElementById("createBookmarkContainer")
+let createButton = document.getElementById("addBookmark")
+
+createButton.onclick = () => { // Popup (Creating new bookmark)
+    createBookmarkBox.style.display = "flex" 
+}
+
+document.getElementById("createBookmark-cancelBtn").onclick = () =>{ // Cancel the creation of new bookmark
+    createBookmarkBox.style.display = "none" 
+}
