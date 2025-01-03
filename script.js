@@ -1,11 +1,17 @@
 try {
     chrome.bookmarks.getTree(function (bookmarkDOM) {
 
-        let bookmarksArray = bookmarkDOM[0].children[0]?.children;
+        let bookmarksArrayDOM1 = ((bookmarkDOM[0].children[0]?.children))
+        let bookmarksArrayDOM2 = (bookmarkDOM[0].children[1]?.children)
+
+        let bookmarksArray = [...bookmarksArrayDOM1,...bookmarksArrayDOM2]
+
+
+        console.log(bookmarksArray)
+    
 
         if (!bookmarksArray) {
             console.error("No bookmarks found.");
-            return;
         }
 
         let container = document.getElementById('bookmarks-container');
@@ -63,17 +69,10 @@ try {
                         window.open(bookmarkCreated.url)
                     }
                 }
-
+                
                 openUrl(bookmark_title)
                 openUrl(bookmark_favicon)
-
-
-                bookmark_input.onchange = () => {
-                    if(bookmark_input.checked){
-                    
-                    }
-                }
-
+                
             });
         }
 
@@ -100,3 +99,9 @@ try {
 } catch (error) {
     console.log(error)
 }
+
+// chrome.bookmarks.create({
+//     title:"lorem",
+//     url : "https://google.com"
+
+// })
