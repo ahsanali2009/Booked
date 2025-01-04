@@ -108,10 +108,51 @@ try {
 let createBookmarkBox = document.getElementById("createBookmarkContainer")
 let createButton = document.getElementById("addBookmark")
 
-createButton.onclick = () => { // Popup (Creating new bookmark)
+    // Popup (Creating new bookmark)
+createButton.onclick = () => {
     createBookmarkBox.style.display = "flex" 
 }
 
-document.getElementById("createBookmark-cancelBtn").onclick = () =>{ // Cancel the creation of new bookmark
+    // Cancel the creation of new bookmark
+document.getElementById("createBookmark-cancelBtn").onclick = () =>{
     createBookmarkBox.style.display = "none" 
+}
+
+    // Create New Bookmarks Function
+document.getElementById("createBookmark-createBtn").onclick = () => {
+
+    let bookmarkTitle = document.getElementById("bookmarkTitle");
+    let bookmarkURL = document.getElementById("bookmarkURL")
+
+    if((bookmarkTitle.value).length > 0 && (bookmarkURL.value).length > 0) {
+
+        if((bookmarkURL.value).startsWith("https://") || (bookmarkURL.value).startsWith("http://")) {
+
+            chrome.bookmarks.create({
+                title : bookmarkTitle.value,
+                url : bookmarkURL.value ,
+            })
+
+
+            setTimeout(() => {
+                
+                createBookmarkBox.style.display = "none" 
+                bookmarkTitle.style.borderColor = "Green"
+                bookmarkURL.style.borderColor = "Green"
+                
+                location.reload()
+            }, 1500);
+
+
+        } else {
+            bookmarkURL.style.borderColor = "Red" 
+            bookmarkURL.placeholder = "URL must start with https://"
+        }
+
+
+    } else {
+        bookmarkTitle.style.borderColor = "Red"
+        bookmarkURL.style.borderColor = "Red"
+
+    }
 }
