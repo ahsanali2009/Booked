@@ -108,6 +108,9 @@ try {
 let createBookmarkBox = document.getElementById("createBookmarkContainer")
 let createButton = document.getElementById("addBookmark")
 
+let bookmarkTitle = document.getElementById("bookmarkTitle");
+let bookmarkURL = document.getElementById("bookmarkURL")
+
     // Popup (Creating new bookmark)
 createButton.onclick = () => {
     createBookmarkBox.style.display = "flex" 
@@ -115,14 +118,15 @@ createButton.onclick = () => {
 
     // Cancel the creation of new bookmark
 document.getElementById("createBookmark-cancelBtn").onclick = () =>{
+    
     createBookmarkBox.style.display = "none" 
+    bookmarkTitle.style.borderColor = "black"
+    bookmarkURL.style.borderColor = "black"
 }
 
     // Create New Bookmarks Function
 document.getElementById("createBookmark-createBtn").onclick = () => {
 
-    let bookmarkTitle = document.getElementById("bookmarkTitle");
-    let bookmarkURL = document.getElementById("bookmarkURL")
 
     if((bookmarkTitle.value).length > 0 && (bookmarkURL.value).length > 0) {
 
