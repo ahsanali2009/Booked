@@ -32,6 +32,9 @@ try {
                 bookmark_input.type = "checkbox";
                 bookmark_input.setAttribute('class', 'bookmark-input');
 
+                let deleteBookmarkIcon = document.createElement('img')
+                deleteBookmarkIcon.setAttribute('class','bookmark-delete-icon')
+                deleteBookmarkIcon.src = "/images/deleteicon.png"
                 
                 let bookmark_favicon = document.createElement('img');
                 bookmark_favicon.setAttribute('class', 'bookmark-favicon');
@@ -50,9 +53,9 @@ try {
                 p_title.href = bookmarkCreated.url
                 p_title.textContent = (bookmarkCreated.title)
 
-                if ((bookmarkCreated.title).length > 49) { // Get short title.
-                    let temp_p_title = (bookmarkCreated.title).slice(0, 49)
-                    p_title.textContent = `${temp_p_title} ....`
+                if ((bookmarkCreated.title).length > 47) { // Get short title.
+                    let temp_p_title = (bookmarkCreated.title).slice(0, 47)
+                    p_title.textContent = `${temp_p_title}...`
                 } else {
                     p_title.textContent = (bookmarkCreated.title)
                 }
@@ -60,7 +63,8 @@ try {
                 bookmark.append(bookmark_input);
                 bookmark.append(bookmark_favicon);
                 bookmark.append(bookmark_title);
-                bookmark_title.appendChild(p_title);
+                bookmark_title.appendChild(p_title)
+                bookmark.append(deleteBookmarkIcon)
                 container.appendChild(bookmark);
 
                 function openUrl(element) {
@@ -72,6 +76,44 @@ try {
                 openUrl(bookmark_title)
                 openUrl(bookmark_favicon)
                 
+
+                // Function for deleting a bookmark...
+                bookmark_input.onclick = () => {
+                    if(bookmark_input.checked){ // Condition to check if checkbok is checked
+
+                        deleteBookmarkIcon.style.display = "flex" // Delete icon is visible now...
+                        
+                            deleteBookmarkIcon.onclick = () => { // Delete the bookmark selected...
+                        
+                                let deleteBookmarkContainer = document.getElementById("deleteBookmarkContainer")
+                                deleteBookmarkContainer.style.display = "flex"
+
+                    document.getElementById("confirm-delete-button").onclick = () =>{
+                        
+                        chrome.bookmarks.remove((bookmarkCreated.id).toString())
+
+                        setTimeout(() => {
+                            
+                            deleteBookmarkContainer.style.display = "none"
+                            location.reload()
+                        }, 100);
+
+                    }
+
+                        }
+
+                        // Cancel the delete function...
+                document.getElementById("cancel-delete-button").onclick = () => {
+                    deleteBookmarkContainer.style.display = "none"
+
+                }
+
+                    }
+                    else if(!(bookmark_input.checked)){ // If un-checked, removes the delete icon... 
+                        deleteBookmarkIcon.style.display = "none" }
+                }
+
+
             });
         }
 
@@ -145,7 +187,7 @@ document.getElementById("createBookmark-createBtn").onclick = () => {
                 bookmarkURL.style.borderColor = "Green"
                 
                 location.reload()
-            }, 1500);
+            }, 100);
 
 
         } else {
