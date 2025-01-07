@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
-    "name": "Bookmarks Manager",
-    "description": "A Chrome extension to manage bookmarks.",
+    "name": "Booked",
+    "description": "Declutter Your Browser, One Bookmark at a Time.",
     "version": "1.0",
     "permissions": [
       "bookmarks"
