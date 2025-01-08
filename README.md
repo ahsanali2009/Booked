@@ -1,4 +1,4 @@
-# Bookmark Manager Chrome Extension Documentation
+# Booked | Bookmark Manager Chrome Extension
 
 ## Overview
 The Bookmark Manager extension for Chrome provides an easy-to-use interface to manage your bookmarks. It allows you to create new bookmarks, search for existing ones, and delete bookmarks. The extension is designed with a clean and simple user interface to enhance your browsing experience.
