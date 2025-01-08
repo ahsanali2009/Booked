@@ -32,12 +32,6 @@ The Bookmark Manager extension for Chrome provides an easy-to-use interface to m
    - Hover over the bookmark you want to delete and click the **Delete** button next to it.
    - Confirm the deletion when prompted.
 
-## UI Design
-The extension features a clean and minimalistic user interface:
-- A simple input form for creating new bookmarks.
-- A searchable list view of saved bookmarks.
-- Clear delete buttons and intuitive navigation.
-
 ## Contributing
 If you’d like to contribute to the development of this extension, feel free to fork the repository and submit a pull request.
 
